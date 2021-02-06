@@ -1,6 +1,7 @@
 .editor-wrapper {
 	position: relative;
 	height: 100%;
+	width: calc(100% - 10px);
 }
 
 .editor-wrapper .button-format {
@@ -14,4 +15,10 @@
 
 .editor-wrapper:hover .button-format {
 	opacity: 1;
+}
+
+.cell--container {
+	height: 100%;
+	display: flex;
+	flex-direction: row;
 }

@@ -74,7 +74,7 @@ const Editor: React.FC<EditorProps> = ({ initialValue, onChange }) => {
 				}}
 				language="javascript"
 				theme="dark"
-				height="500px"
+				height="100%"
 			/>
 		</div>
 	);

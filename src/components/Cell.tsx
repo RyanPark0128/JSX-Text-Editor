@@ -1,28 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Editor from './Editor';
 import Preview from './Preview';
 import bundle from '../bundler';
+import Resizable from './Resizable';
 
 const Cell = () => {
 	const [input, setInput] = useState('');
 	const [code, setCode] = useState('');
 
-	const onClick = async () => {
-		const output = await bundle(input);
-		setCode(output);
-	};
+	useEffect(() => {
+		const timer = setTimeout(async () => {
+			const output = await bundle(input);
+			setCode(output);
+		}, 1000);
+
+		return () => {
+			clearTimeout(timer);
+		};
+	}, [input]);
 
 	return (
-		<div>
-			<Editor
-				initialValue="//Welcome to React code editor"
-				onChange={value => setInput(value)}
-			/>
-			<div>
-				<button onClick={onClick}>Submit</button>
+		<Resizable direction="vertical">
+			<div className="cell--container">
+				<Resizable direction="horizontal">
+					<Editor
+						initialValue="//Welcome to React code editor"
+						onChange={value => setInput(value)}
+					/>
+				</Resizable>
+				<Preview code={code} />
 			</div>
-			<Preview code={code} />
-		</div>
+		</Resizable>
 	);
 };
 
