@@ -1,0 +1,12 @@
+.action-bar {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	opacity: 0.3;
+	transition: opacity 0.15s linear;
+}
+
+.action-bar:hover {
+	opacity: 1;
+	transition: opacity 0.15s linear;
+}
