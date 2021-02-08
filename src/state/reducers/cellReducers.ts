@@ -19,6 +19,9 @@ const initialState: CellState = {
 	data: {}
 };
 
+const instruction =
+	'//Welcome to JSX Text Editor \n//Use Show() function to render your React Components \n//You can also import npm packages \n//If necessary, you can add text memo as well\n//Hover on top or bottom of this code cell to add code or text cell \n\nimport React from "react";\nimport ReactDOM from "react-dom";\n\nconst App = () => {\n return <div> Hello World </div>;\n};\n\nshow(<App/>);';
+
 const reducer = produce((state: CellState = initialState, action: Action) => {
 	switch (action.type) {
 		case ActionType.UPDATE_CELL:
@@ -41,7 +44,7 @@ const reducer = produce((state: CellState = initialState, action: Action) => {
 			return state;
 		case ActionType.INSERT_CELL_AFTER:
 			const cell: Cell = {
-				content: '',
+				content: instruction,
 				type: action.payload.type,
 				id: randomId()
 			};
